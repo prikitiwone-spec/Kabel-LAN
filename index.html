@@ -442,17 +442,12 @@
         const transaction = db.transaction(["videos"], "readonly");
         const store = transaction.objectStore("videos");
 
-        // Load Video 1
+        // Load Video 
         store.get("video1").onsuccess = function(event) {
             const fileBlob = event.target.result;
             if (fileBlob) displayVideo(fileBlob, 1);
         };
-
-        // Load Video 2
-        store.get("video2").onsuccess = function(event) {
-            const fileBlob = event.target.result;
-            if (fileBlob) displayVideo(fileBlob, 2);
-        };
+        
     }
 
     // Panggil fungsi saat window load
