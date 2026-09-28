@@ -442,7 +442,6 @@
         }
     }
 
-    <script>
     // ==========================================
     // 2. FUNGSI UNTUK VIDEO (INDEXED DB BROWSER)
     // ==========================================
@@ -508,7 +507,13 @@
             if (fileBlob) displayVideo(fileBlob, 1);
         };
     }
+
+    // Pastikan PPT muncul saat halaman di-refresh
+    window.onload = function() {
+        displayCanva();
+    };
 </script>
     
 </body>
 </html>
+
