@@ -386,30 +386,21 @@
         <p id="emptyPptMsg" style="text-align: center; color: gray; margin-top: 15px;">Belum ada PPT yang diunggah. 🥺</p>
     </section>
 
-    <!-- MATERI 4: UPLOAD VIDEO PERMANEN -->
+  <!-- MATERI 4: UPLOAD VIDEO PERMANEN -->
     <section class="section-card">
-        <h2>🎥 4. Upload Video Dokumentasi</h2>
-        <p style="text-align: center; font-size: 0.9rem;"><i>Video akan disimpan permanen di dalam browser kamu meski halaman di-refresh! ✨</i></p>
+        <h2>🎥 4. Bukti Video Praktikum</h2>
+        <p style="text-align: center; color: gray;"><i>Upload video dokumentasi di bawah ini. Sistem menggunakan IndexedDB sehingga video tidak akan hilang meskipun halaman web di-refresh! ✨</i></p>
         
-        <div class="video-container">
-            <!-- Video 1 -->
-            <div class="video-box">
-                <h3>Video 1</h3>
+        <div class="video-container" style="justify-content: center;">
+            <div class="video-box" style="flex: 0 1 80%;">
+                <h3>Video Praktikum</h3>
                 <input type="file" id="videoInput1" accept="video/*">
-                <button onclick="saveVideo(1)">Upload Video 1</button>
-                <video id="videoPlayer1" controls style="display:none;"></video>
-            </div>
-
-            <!-- Video 2 -->
-            <div class="video-box">
-                <h3>Video 2</h3>
-                <input type="file" id="videoInput2" accept="video/*">
-                <button onclick="saveVideo(2)">Upload Video 2</button>
-                <video id="videoPlayer2" controls style="display:none;"></video>
+                <button onclick="saveVideo(1)">Upload Video</button>
+                <video id="videoPlayer1" controls style="display:none; width: 100%; margin-top: 15px; border-radius: 10px;"></video>
             </div>
         </div>
     </section>
-
+    
 </div>
 
 <!-- JAVASCRIPT UNTUK SIMPAN PERMANEN -->
@@ -451,60 +442,56 @@
         }
     }
 
+    <script>
     // ==========================================
-    // 2. LOGIKA UNTUK VIDEO (INDEXED DB)
+    // 2. FUNGSI UNTUK VIDEO (INDEXED DB BROWSER)
     // ==========================================
-    const dbName = "VideoGalleryDB";
+    const dbName = "VideoGalleryDB_Aisyah";
     let db;
 
-    // Inisialisasi IndexedDB
     const request = indexedDB.open(dbName, 1);
 
     request.onupgradeneeded = function(event) {
         db = event.target.result;
-        // Membuat tabel penyimpanan (object store)
         if (!db.objectStoreNames.contains("videos")) {
-            db.createObjectStore("videos");
+            db.createObjectStore("videos"); 
         }
     };
 
     request.onsuccess = function(event) {
         db = event.target.result;
-        loadVideos(); // Load video saat halaman dibuka
+        loadVideos(); 
     };
 
     request.onerror = function(event) {
         console.error("Database error: " + event.target.errorCode);
     };
 
-    // Fungsi menyimpan video
-    function saveVideo(videoNumber) {
+    function saveVideo(videoNumber) { 
         const fileInput = document.getElementById(`videoInput${videoNumber}`);
         const file = fileInput.files[0];
 
         if (!file) {
-            alert('Pilih video terlebih dahulu ya! 🥺');
+            alert('Pilih video dari perangkatmu terlebih dahulu ya! 🥺');
             return;
         }
 
         const transaction = db.transaction(["videos"], "readwrite");
         const store = transaction.objectStore("videos");
         
-        // Simpan file menggunakan key 'video1' atau 'video2'
-        const request = store.put(file, `video${videoNumber}`);
+        const request = store.put(file, `video${videoNumber}`); 
 
         request.onsuccess = function() {
-            alert(`Video ${videoNumber} berhasil disimpan permanen! ✨`);
+            alert(`Sempurna! Video berhasil diunggah secara permanen. ✨`);
             displayVideo(file, videoNumber);
-            fileInput.value = ''; // Kosongkan input
+            fileInput.value = ''; 
         };
 
         request.onerror = function() {
-            alert("Gagal menyimpan video. Coba lagi ya!");
+            alert("Duh, gagal menyimpan video. Memori mungkin penuh atau coba lagi ya!");
         };
     }
 
-    // Fungsi menampilkan video
     function displayVideo(fileOrBlob, videoNumber) {
         const videoPlayer = document.getElementById(`videoPlayer${videoNumber}`);
         const url = URL.createObjectURL(fileOrBlob);
@@ -512,24 +499,16 @@
         videoPlayer.style.display = 'block';
     }
 
-    // Fungsi load video saat refresh
     function loadVideos() {
         const transaction = db.transaction(["videos"], "readonly");
         const store = transaction.objectStore("videos");
 
-        // Load Video 
         store.get("video1").onsuccess = function(event) {
             const fileBlob = event.target.result;
             if (fileBlob) displayVideo(fileBlob, 1);
         };
-        
     }
-
-    // Panggil fungsi saat window load
-    window.onload = function() {
-        displayCanva();
-    };
 </script>
-
+    
 </body>
 </html>
