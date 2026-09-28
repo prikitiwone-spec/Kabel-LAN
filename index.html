@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaringan Komputer - Aisyah Safitri 🌸</title>
+    <!-- Menggunakan font Google 'Nunito' yang memberikan kesan bulat dan lucu -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ffb7b2; /* Soft Pink */
+            --secondary-color: #ffdac1; /* Soft Peach */
+            --bg-color: #fffaf0; /* Floral White */
+            --card-bg: #ffffff;
+            --text-color: #5c4343; /* Dark warm brown for softer reading */
+            --accent-color: #e2858e; /* Deeper pink */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(var(--secondary-color) 2px, transparent 2px);
+            background-size: 30px 30px;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 30px;
+            box-shadow: 0 10px 20px rgba(255, 183, 178, 0.3);
+            margin-bottom: 30px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            border: 3px dashed var(--primary-color);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .profile-item {
+            flex: 1 1 45%;
+            font-size: 1.1rem;
+        }
+
+        .profile-item strong {
+            color: var(--accent-color);
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(226, 133, 142, 0.15);
+            position: relative;
+        }
+
+        .section-card h2 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-list {
+            padding-left: 20px;
+        }
+
+        .step-list li {
+            margin-bottom: 10px;
+        }
+
+        .upload-area {
+            background: #fff5f6;
+            border: 2px solid var(--secondary-color);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input[type="text"], input[type="file"] {
+            width: 80%;
+            padding: 12px;
+            border: 2px solid var(--primary-color);
+            border-radius: 15px;
+            outline: none;
+            margin: 10px 0;
+            font-size: 1rem;
+            color: var(--text-color);
+            background: white;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent-color);
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(226, 133, 142, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(226, 133, 142, 0.5);
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 450px;
+            border: 3px solid var(--primary-color);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .video-box {
+            flex: 1 1 45%;
+            background: white;
+            border: 2px dashed var(--accent-color);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+            background: black;
+        }
+
+        a.btn-download {
+            display: inline-block;
+            background: var(--text-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+        
+        a.btn-download:hover {
+            transform: scale(1.05);
+        }
+
+        /* Emojis & Decorations */
+        .deco {
+            position: absolute;
+            opacity: 0.6;
+        }
+        .deco-1 { top: -10px; right: -10px; font-size: 3rem; }
+        .deco-2 { bottom: 10px; left: -10px; font-size: 2.5rem; }
+
+        @media (max-width: 768px) {
+            .profile-item, .video-box {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- HEADER -->
+    <header>
+        <span class="deco deco-1">🎀</span>
+        <span class="deco deco-2">✨</span>
+        <h1>Panduan Jaringan Komputer</h1>
+        <p>Belajar Jaringan dengan Mudah & Menyenangkan 🌸</p>
+    </header>
+
+    <!-- PROFIL MAHASISWA -->
+    <div class="profile-card">
+        <div class="profile-item"><strong>Nama:</strong> Aisyah Safitri</div>
+        <div class="profile-item"><strong>NIM:</strong> 062640723192</div>
+        <div class="profile-item"><strong>Kelas:</strong> 1-TIA</div>
+        <div class="profile-item"><strong>Jurusan:</strong> Teknik Komputer</div>
+        <div class="profile-item"><strong>Program Studi:</strong> D4 Teknologi Informatika Multimedia Digital</div>
+        <div class="profile-item"><strong>Mata Kuliah:</strong> Jaringan Komputer</div>
+        <div class="profile-item" style="flex: 1 1 100%;"><strong>Dosen Pengampu:</strong> Dr. Ali Firdaus. S.Kom., M.Kom</div>
+    </div>
+
+    <!-- MATERI 1: MERANGKAI KABEL LAN -->
+    <section class="section-card">
+        <h2>🛠️ 1. Cara Merangkai Kabel LAN</h2>
+        <p><strong>Alat & Bahan yang Dibutuhkan:</strong></p>
+        <ul class="step-list">
+            <li><strong>Kabel UTP:</strong> Media transmisi data.</li>
+            <li><strong>Konektor RJ45:</strong> Kepala konektor untuk kabel UTP.</li>
+            <li><strong>Tang Crimping:</strong> Alat untuk memotong kabel dan menjepit konektor RJ45.</li>
+            <li><strong>LAN Tester:</strong> Alat untuk menguji apakah kabel LAN berfungsi dengan baik.</li>
+        </ul>
+        <br>
+        <p><strong>Langkah-langkah (Kabel Straight):</strong></p>
+        <ol class="step-list">
+            <li>Kupas ujung jaket kabel UTP menggunakan tang crimping sekitar 2 cm.</li>
+            <li>Pisahkan dan luruskan lilitan kabel, lalu urutkan warnanya: <b>Putih Orange, Orange, Putih Hijau, Biru, Putih Biru, Hijau, Putih Coklat, Coklat</b>.</li>
+            <li>Ratakan ujung kabel dengan memotongnya lurus menggunakan tang crimping.</li>
+            <li>Masukkan kabel ke dalam konektor RJ45 hingga ujung tembaganya menyentuh ujung konektor.</li>
+            <li>Jepit konektor RJ45 menggunakan tang crimping hingga terdengar bunyi "klik".</li>
+            <li>Lakukan hal yang sama pada ujung kabel satunya.</li>
+            <li>Uji kabel menggunakan <b>LAN Tester</b>. Jika lampu 1 sampai 8 menyala berurutan di kedua sisi, yeay! Kabel berhasil dibuat ✨.</li>
+        </ol>
+    </section>
+
+    <!-- MATERI 2: MENGHUBUNGKAN LAPTOP & SHARING FILE -->
+    <section class="section-card">
+        <h2>💻 2. Menghubungkan 2 Laptop & Sharing File</h2>
+        
+        <p><strong>A. Cara Menghubungkan 2 Laptop:</strong></p>
+        <ol class="step-list">
+            <li>Colokkan ujung kabel LAN yang sudah dibuat ke port LAN Laptop 1 dan ujung lainnya ke Laptop 2.</li>
+            <li>Buka <i>Control Panel > Network and Sharing Center > Change adapter settings</i>.</li>
+            <li>Klik kanan pada <b>Ethernet</b>, pilih <b>Properties</b>, lalu klik dua kali pada <b>Internet Protocol Version 4 (TCP/IPv4)</b>.</li>
+            <li>Pilih <i>"Use the following IP address"</i>.<br>
+                - Laptop 1 isi IP: <code>192.168.1.1</code> (Subnet mask: 255.255.255.0)<br>
+                - Laptop 2 isi IP: <code>192.168.1.2</code> (Subnet mask: 255.255.255.0)
+            </li>
+            <li>Klik OK. (Pastikan Windows Defender Firewall dimatikan sementara agar tidak memblokir koneksi).</li>
+            <li>Buka CMD, lalu ketik <code>ping 192.168.1.2</code> dari Laptop 1. Jika <i>Reply</i>, berarti sudah terhubung! 💖</li>
+        </ol>
+
+        <br>
+        <p><strong>B. Cara Sharing File:</strong></p>
+        <ol class="step-list">
+            <li>Buka <i>Network and Sharing Center > Advanced sharing settings</i>. Turn ON <b>Network discovery</b> dan <b>File and printer sharing</b>. Pada bagian All Networks, Turn OFF <i>password protected sharing</i>.</li>
+            <li>Pilih folder yang ingin dibagikan, klik kanan -> <b>Properties</b>.</li>
+            <li>Pilih tab <b>Sharing</b>, klik tombol <b>Advanced Sharing</b>.</li>
+            <li>Centang <i>"Share this folder"</i>, lalu klik <b>Permissions</b>.</li>
+            <li>Centang <i>Full Control</i> untuk "Everyone", lalu klik OK dan Apply.</li>
+            <li>Untuk mengambil file, di Laptop 2 tekan <code>Win + R</code>, ketik <code>\\192.168.1.1</code> lalu Enter. Folder siap diambil! 🎀</li>
+        </ol>
+    </section>
+
+    <!-- MATERI 3: UPLOAD & PREVIEW PPT CANVA -->
+    <section class="section-card">
+        <h2>📊 3. Presentasi (PPT) Materi</h2>
+        <div class="upload-area">
+            <p>Masukkan Link Canva PPT di sini (akan tersimpan permanen):</p>
+            <input type="text" id="canvaInput" placeholder="Tempel link Canva di sini... (Gunakan link Embed/View)">
+            <br>
+            <button onclick="saveCanvaLink()">Simpan PPT 🌸</button>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="#" id="downloadBtn" class="btn-download" target="_blank" style="display:none;">⬇️ Buka / Download PPT di Canva</a>
+        </div>
+
+        <div class="iframe-container" id="iframeContainer" style="display: none;">
+            <iframe id="canvaPreview" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+        </div>
+        <p id="emptyPptMsg" style="text-align: center; color: gray; margin-top: 15px;">Belum ada PPT yang diunggah. 🥺</p>
+    </section>
+
+    <!-- MATERI 4: UPLOAD VIDEO PERMANEN -->
+    <section class="section-card">
+        <h2>🎥 4. Upload Video Dokumentasi</h2>
+        <p style="text-align: center; font-size: 0.9rem;"><i>Video akan disimpan permanen di dalam browser kamu meski halaman di-refresh! ✨</i></p>
+        
+        <div class="video-container">
+            <!-- Video 1 -->
+            <div class="video-box">
+                <h3>Video 1</h3>
+                <input type="file" id="videoInput1" accept="video/*">
+                <button onclick="saveVideo(1)">Upload Video 1</button>
+                <video id="videoPlayer1" controls style="display:none;"></video>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="video-box">
+                <h3>Video 2</h3>
+                <input type="file" id="videoInput2" accept="video/*">
+                <button onclick="saveVideo(2)">Upload Video 2</button>
+                <video id="videoPlayer2" controls style="display:none;"></video>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- JAVASCRIPT UNTUK SIMPAN PERMANEN -->
+<script>
+    // ==========================================
+    // 1. LOGIKA UNTUK PPT CANVA (LOCAL STORAGE)
+    // ==========================================
+    function saveCanvaLink() {
+        const link = document.getElementById('canvaInput').value;
+        if (link) {
+            // Ubah link biasa menjadi link embed jika memungkinkan
+            let embedLink = link;
+            if(link.includes('/view')) {
+                embedLink = link.split('/view')[0] + '/view?embed';
+            }
+            
+            localStorage.setItem('savedCanvaLink', embedLink);
+            localStorage.setItem('originalCanvaLink', link);
+            displayCanva();
+            alert('Yay! Link PPT Canva berhasil disimpan permanen! 🎀');
+        } else {
+            alert('Ups, masukkan link Canva dulu ya! 🥺');
+        }
+    }
+
+    function displayCanva() {
+        const savedEmbedLink = localStorage.getItem('savedCanvaLink');
+        const savedOriginalLink = localStorage.getItem('originalCanvaLink');
+        
+        if (savedEmbedLink) {
+            document.getElementById('canvaInput').value = savedOriginalLink;
+            document.getElementById('canvaPreview').src = savedEmbedLink;
+            document.getElementById('iframeContainer').style.display = 'block';
+            document.getElementById('emptyPptMsg').style.display = 'none';
+            
+            const downloadBtn = document.getElementById('downloadBtn');
+            downloadBtn.href = savedOriginalLink;
+            downloadBtn.style.display = 'inline-block';
+        }
+    }
+
+    // ==========================================
+    // 2. LOGIKA UNTUK VIDEO (INDEXED DB)
+    // ==========================================
+    const dbName = "VideoGalleryDB";
+    let db;
+
+    // Inisialisasi IndexedDB
+    const request = indexedDB.open(dbName, 1);
+
+    request.onupgradeneeded = function(event) {
+        db = event.target.result;
+        // Membuat tabel penyimpanan (object store)
+        if (!db.objectStoreNames.contains("videos")) {
+            db.createObjectStore("videos");
+        }
+    };
+
+    request.onsuccess = function(event) {
+        db = event.target.result;
+        loadVideos(); // Load video saat halaman dibuka
+    };
+
+    request.onerror = function(event) {
+        console.error("Database error: " + event.target.errorCode);
+    };
+
+    // Fungsi menyimpan video
+    function saveVideo(videoNumber) {
+        const fileInput = document.getElementById(`videoInput${videoNumber}`);
+        const file = fileInput.files[0];
+
+        if (!file) {
+            alert('Pilih video terlebih dahulu ya! 🥺');
+            return;
+        }
+
+        const transaction = db.transaction(["videos"], "readwrite");
+        const store = transaction.objectStore("videos");
+        
+        // Simpan file menggunakan key 'video1' atau 'video2'
+        const request = store.put(file, `video${videoNumber}`);
+
+        request.onsuccess = function() {
+            alert(`Video ${videoNumber} berhasil disimpan permanen! ✨`);
+            displayVideo(file, videoNumber);
+            fileInput.value = ''; // Kosongkan input
+        };
+
+        request.onerror = function() {
+            alert("Gagal menyimpan video. Coba lagi ya!");
+        };
+    }
+
+    // Fungsi menampilkan video
+    function displayVideo(fileOrBlob, videoNumber) {
+        const videoPlayer = document.getElementById(`videoPlayer${videoNumber}`);
+        const url = URL.createObjectURL(fileOrBlob);
+        videoPlayer.src = url;
+        videoPlayer.style.display = 'block';
+    }
+
+    // Fungsi load video saat refresh
+    function loadVideos() {
+        const transaction = db.transaction(["videos"], "readonly");
+        const store = transaction.objectStore("videos");
+
+        // Load Video 1
+        store.get("video1").onsuccess = function(event) {
+            const fileBlob = event.target.result;
+            if (fileBlob) displayVideo(fileBlob, 1);
+        };
+
+        // Load Video 2
+        store.get("video2").onsuccess = function(event) {
+            const fileBlob = event.target.result;
+            if (fileBlob) displayVideo(fileBlob, 2);
+        };
+    }
+
+    // Panggil fungsi saat window load
+    window.onload = function() {
+        displayCanva();
+    };
+</script>
+
+</body>
+</html>
