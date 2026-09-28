@@ -209,6 +209,34 @@
         .deco-1 { top: -10px; right: -10px; font-size: 3rem; }
         .deco-2 { bottom: 10px; left: -10px; font-size: 2.5rem; }
 
+        /* Style Tabel Lucu untuk Susunan Kabel */
+        .cute-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background-color: #fff9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(226, 133, 142, 0.1);
+        }
+
+        .cute-table th, .cute-table td {
+            border: 2px dashed var(--secondary-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        .cute-table th {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .cute-table td {
+            font-weight: 600;
+        }
+        
         @media (max-width: 768px) {
             .profile-item, .video-box {
                 flex: 1 1 100%;
@@ -238,29 +266,76 @@
         <div class="profile-item"><strong>Mata Kuliah:</strong> Jaringan Komputer</div>
         <div class="profile-item" style="flex: 1 1 100%;"><strong>Dosen Pengampu:</strong> Dr. Ali Firdaus. S.Kom., M.Kom</div>
     </div>
-
-    <!-- MATERI 1: MERANGKAI KABEL LAN -->
+    
+<!-- MATERI 1: PENGENALAN & MERANGKAI KABEL LAN -->
     <section class="section-card">
-        <h2>🛠️ 1. Cara Merangkai Kabel LAN</h2>
-        <p><strong>Alat & Bahan yang Dibutuhkan:</strong></p>
+        <h2>🛠️ 1. Mengenal & Merangkai Kabel LAN</h2>
+        
+        <p><strong>Apa itu Kabel LAN (UTP)? 🎀</strong></p>
+        <p>Kabel UTP (Unshielded Twisted Pair) adalah kabel yang biasa digunakan untuk menghubungkan berbagai perangkat keras jaringan ke komputer. Di dalamnya terdapat 8 kabel kecil berwarna-warni yang saling melilit cantik!</p>
+        <br>
+        <p><strong>Dua Jenis Susunan Kabel LAN:</strong></p>
         <ul class="step-list">
-            <li><strong>Kabel UTP:</strong> Media transmisi data.</li>
-            <li><strong>Konektor RJ45:</strong> Kepala konektor untuk kabel UTP.</li>
-            <li><strong>Tang Crimping:</strong> Alat untuk memotong kabel dan menjepit konektor RJ45.</li>
-            <li><strong>LAN Tester:</strong> Alat untuk menguji apakah kabel LAN berfungsi dengan baik.</li>
+            <li>🌸 <strong>Kabel Straight:</strong> Digunakan untuk menghubungkan 2 perangkat yang <em>berbeda</em> (Contoh: Laptop ke Switch, PC ke Router).</li>
+            <li>🌸 <strong>Kabel Cross Over:</strong> Digunakan untuk menghubungkan 2 perangkat yang <em>sama</em> (Contoh: <b>Laptop ke Laptop</b>, atau PC ke PC).</li>
         </ul>
         <br>
-        <p><strong>Langkah-langkah (Kabel Straight):</strong></p>
+        
+        <p><strong>🎨 Susunan Warna Kabel Cross Over</strong></p>
+        <p>Karena tugas ini menghubungkan 2 laptop, kita menggunakan kabel <strong>Cross Over</strong>. Susunan warna ujung A dan ujung B itu berbeda loh! Berikut urutannya:</p>
+        
+        <table class="cute-table">
+            <tr>
+                <th>Ujung A (Standar T568B) 🌸</th>
+                <th>Ujung B (Standar T568A) 🌷</th>
+            </tr>
+            <tr>
+                <td>🤍🧡 Putih Orange</td>
+                <td>🤍💚 Putih Hijau</td>
+            </tr>
+            <tr>
+                <td>🧡 Orange</td>
+                <td>💚 Hijau</td>
+            </tr>
+            <tr>
+                <td>🤍💚 Putih Hijau</td>
+                <td>🤍🧡 Putih Orange</td>
+            </tr>
+            <tr>
+                <td>💙 Biru</td>
+                <td>💙 Biru</td>
+            </tr>
+            <tr>
+                <td>🤍💙 Putih Biru</td>
+                <td>🤍💙 Putih Biru</td>
+            </tr>
+            <tr>
+                <td>💚 Hijau</td>
+                <td>🧡 Orange</td>
+            </tr>
+            <tr>
+                <td>🤍🤎 Putih Coklat</td>
+                <td>🤍🤎 Putih Coklat</td>
+            </tr>
+            <tr>
+                <td>🤎 Coklat</td>
+                <td>🤎 Coklat</td>
+            </tr>
+        </table>
+        <br>
+        
+        <p><strong>✨ Langkah-langkah Merangkai:</strong></p>
         <ol class="step-list">
-            <li>Kupas ujung jaket kabel UTP menggunakan tang crimping sekitar 2 cm.</li>
-            <li>Pisahkan dan luruskan lilitan kabel, lalu urutkan warnanya: <b>Putih Orange, Orange, Putih Hijau, Biru, Putih Biru, Hijau, Putih Coklat, Coklat</b>.</li>
+            <li>Kupas ujung jaket pelindung kabel UTP menggunakan tang crimping sekitar 2 cm.</li>
+            <li>Pisahkan lilitan kabel, luruskan, lalu urutkan warnanya (satu sisi ikut Ujung A, sisi satunya ikut Ujung B).</li>
             <li>Ratakan ujung kabel dengan memotongnya lurus menggunakan tang crimping.</li>
-            <li>Masukkan kabel ke dalam konektor RJ45 hingga ujung tembaganya menyentuh ujung konektor.</li>
-            <li>Jepit konektor RJ45 menggunakan tang crimping hingga terdengar bunyi "klik".</li>
-            <li>Lakukan hal yang sama pada ujung kabel satunya.</li>
-            <li>Uji kabel menggunakan <b>LAN Tester</b>. Jika lampu 1 sampai 8 menyala berurutan di kedua sisi, yeay! Kabel berhasil dibuat ✨.</li>
+            <li>Masukkan kabel ke dalam konektor RJ45 dengan posisi pin emas menghadap ke atas. Pastikan tembaganya mentok ke ujung!</li>
+            <li>Jepit konektor RJ45 menggunakan tang crimping hingga terdengar bunyi "klik" mantap.</li>
+            <li>Uji menggunakan <b>LAN Tester</b>. <br>
+                <em>Untuk Cross Over:</em> Lampu menyala menyilang dengan pola: <br>
+                (1 ke 3) - (2 ke 6) - (3 ke 1) - (6 ke 2). Sisanya (4,5,7,8) menyala sejajar. Jika polanya benar, yeay kamu berhasil! 🎉</li>
         </ol>
-    </section>
+    </section> 
 
     <!-- MATERI 2: MENGHUBUNGKAN LAPTOP & SHARING FILE -->
     <section class="section-card">
